@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Home Automation System</title>  <!-- This will be the page title -->
+
+</head>
+<body>
+
+ 
+<header>
+
+				
+
+				<h1>Home Automation</h1>
+
+		<button id="myButton" class="float-right submit-button" >Logout</button>
+		
+		<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "index.html";
+    };
+</script>
+
+			</header>
+
+
+
+<div>
+<h3> FAN 1 <h3><!--  PIN 10 -->
+<button id="11" class="led">FAN Off</button> <br>
+<button id="12" class="led">FAN ON</button> 
+</div>
+
+<div>
+<h3> FAN 2 <h3><!--  PIN 11 -->
+<button id="13" class="led">FAN Off</button> <br>
+<button id="14" class="led">FAN ON</button> 
+</div>
+
+<div>
+<h3> LIGHT 1 <h3><!--  PIN 12 -->
+<button id="15" class="led">LIGHT Off</button> <br>
+<button id="16" class="led">LIGHT ON</button> 
+</div>
+
+<div>
+<h3> LIGHT 2 <h3><!--  PIN 13 -->
+<button id="17" class="led">LIGHT Off</button> <br>
+<button id="18" class="led">LIGHT ON</button>
+</div>
+
+<div>
+<h3> Human Detection <h3><!--  PIN 6 -->
+<button id="19" class="led">OFF</button> <br>
+<button id="20" class="led">ON</button> 
+</div>
+
+
+
+
+<script src="jquery.min.js"></script> <!-- Jquery Script to read Buttons -->
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".led").click(function(){
+    var p = $(this).attr('id'); // This will get us the ID of the button which will be sent to the arduino code.                                                              
+    $.get("http://192.168.10.102:344", {pin:p}); // Sending the get request.....Change this to your static IP or your Local IP
+  });
+});
+</script>
+</body>
+</html>
